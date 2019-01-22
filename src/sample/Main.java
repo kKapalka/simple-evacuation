@@ -64,21 +64,25 @@ public class Main extends Application implements EventHandler<MouseEvent> {
     private void toggleEvacuationPaths(){
         if(burningBuildings.containsValue(true)){
             evacuationPaths.forEach(path->path.setVisible(false));
+            int[] evacuationPathIds = new int[]{1,1,1,1,1};
             if(burningBuildings.get("room1")){
-                displayEvacuationPaths(new int[]{0,1,2,1,1});
+                evacuationPathIds[2]=2;
             }
             if(burningBuildings.get("room2")){
-                displayEvacuationPaths(new int[]{1,0,2,1,1});
+                evacuationPathIds[0]=2;
+                evacuationPathIds[3]=2;
             }
             if(burningBuildings.get("room3")){
-                displayEvacuationPaths(new int[]{1,1,0,1,1});
+                evacuationPathIds[0]=1;
+                evacuationPathIds[3]=1;
             }
             if(burningBuildings.get("room4")){
-                displayEvacuationPaths(new int[]{1,1,2,0,1});
+                evacuationPathIds[2]=1;
             }
             if(burningBuildings.get("room5")){
-                displayEvacuationPaths(new int[]{1,1,2,1,0});
+                evacuationPathIds[3]=2;
             }
+            displayEvacuationPaths(evacuationPathIds);
         } else{
             evacuationPaths.forEach(path->path.setVisible(false));
 
